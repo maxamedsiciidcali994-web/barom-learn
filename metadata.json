@@ -1,0 +1,6 @@
+{
+  "name": "Barom Learn",
+  "description": "A professional Somali-English educational learning app featuring interactive chat-style lessons, voice recognition, and a modern Bento Grid dashboard.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": []
+}

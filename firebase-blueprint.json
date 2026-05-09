@@ -1,0 +1,46 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information and learning statistics",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "targetLanguage": { "type": "string", "enum": ["English", "Somali"] },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "xp": { "type": "integer" },
+            "streak": { "type": "integer" },
+            "completedLessons": { "type": "integer" },
+            "skillLevel": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"] }
+          },
+          "required": ["xp", "streak", "completedLessons", "skillLevel"]
+        },
+        "achievements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "icon": { "type": "string" },
+              "unlockedAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      },
+      "required": ["uid", "displayName", "email", "targetLanguage", "stats"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Primary user profile document"
+    }
+  }
+}
